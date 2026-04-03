@@ -88,7 +88,8 @@ public class GamePlayUIManager : MonoBehaviour
     public void Exit()
     {
         onGameQuitted?.Invoke();
-        sceneManager.QuitGame();
+        sceneManager.LoadMenu();
+        //sceneManager.QuitGame();
     }
 
 }

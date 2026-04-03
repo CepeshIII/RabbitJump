@@ -18,7 +18,7 @@ public class RecordLinesDisplayer : MonoBehaviour
 
         recordList.SortByScoreDescending(); // Sort records by score in descending order
 
-        for (var i = 0; i <= Mathf.Min(recordList.records.Count, 4); i++)
+        for (var i = 0; i < Mathf.Min(recordList.records.Count, 4); i++)
         {
             if(lines.Count > i)
             {
