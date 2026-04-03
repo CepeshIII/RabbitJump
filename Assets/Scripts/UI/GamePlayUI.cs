@@ -1,8 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+
 
 public class GamePlayUI: MonoBehaviour
 {
@@ -21,15 +21,10 @@ public class GamePlayUI: MonoBehaviour
     }
 
 
-    public void Start()
+    private void OnEnable()
     {
         if (menuButton != null)
             menuButton.onClick.AddListener(OnMenuButtonClicked);
-    }
-
-
-    private void OnEnable()
-    {
         if (scoreCounter != null)
             scoreCounter.onScoreUpdated += UpdateScore;
     }
@@ -37,6 +32,8 @@ public class GamePlayUI: MonoBehaviour
 
     private void OnDisable()
     {
+        if (menuButton != null)
+            menuButton.onClick.RemoveListener(OnMenuButtonClicked);
         if (scoreCounter != null)
             scoreCounter.onScoreUpdated -= UpdateScore;
     }

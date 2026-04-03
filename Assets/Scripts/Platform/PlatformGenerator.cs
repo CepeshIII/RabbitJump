@@ -33,7 +33,7 @@ public class PlatformGenerator : MonoBehaviour
     }
 
 
-    private void Start()
+    public void Initialize()
     {
         lastSpawnY = cameraBorder.Bottom;
         SpawnInitialPlatforms();

@@ -14,7 +14,7 @@ public class PlatformPoolManager : MonoBehaviour
     private Queue<CachedObject> activeCachedObjects;
 
 
-    private void Awake()
+    public void Initialize()
     {
         if (parent == null)
             parent = new GameObject("Platforms").transform;

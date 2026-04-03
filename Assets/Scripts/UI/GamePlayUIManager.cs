@@ -26,12 +26,6 @@ public class GamePlayUIManager : MonoBehaviour
     }
 
 
-    private void Awake()
-    {
-        ShowGame();
-    }
-
-
     public void ShowMenu()
     {
         sceneManager.Pause();

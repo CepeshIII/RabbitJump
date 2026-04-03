@@ -26,5 +26,7 @@ public class GamePlaySceneInstaller : MonoInstaller
         Container.Bind<GamePlayUIManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GameOverUI>().FromComponentInHierarchy().AsSingle();
         Container.Bind<MenuUI>().FromComponentInHierarchy().AsSingle();
+
+        Container.Bind<GameEntryPoint>().FromComponentInHierarchy().AsSingle();
     }
 }

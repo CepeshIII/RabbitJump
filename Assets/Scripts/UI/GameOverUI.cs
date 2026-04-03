@@ -19,10 +19,17 @@ public class GameOverUI : MonoBehaviour
     }
 
 
-    public void Start()
+    public void OnEnable()
     {
         if (restartGameButton != null)
             restartGameButton.onClick.AddListener(OnRestartGameButtonClicked);
+    }
+
+
+    public void OnDisable()
+    {
+        if (restartGameButton != null)
+            restartGameButton.onClick.RemoveListener(OnRestartGameButtonClicked);
     }
 
 

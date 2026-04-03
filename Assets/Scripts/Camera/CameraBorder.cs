@@ -12,7 +12,7 @@ public class CameraBorder : MonoBehaviour
 
 
 
-    private void Awake()
+    public void Initialize()
     {
         mainCamera = GetComponent<Camera>();
 

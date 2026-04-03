@@ -14,7 +14,7 @@ public class RB2DMovement : MonoBehaviour, IMovement
     private Rigidbody2D rb;
 
 
-    private void Start()
+    private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
     }

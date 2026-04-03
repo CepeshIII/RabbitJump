@@ -20,13 +20,22 @@ public class MenuUI : MonoBehaviour
     }
 
 
-    public void Start()
+    public void OnEnable()
     {
         if (resumeButton != null)
             resumeButton.onClick.AddListener(OnResumeButtonClicked);
 
         if (exitButton != null)
             exitButton.onClick.AddListener(OnExitButtonClicked);
+    }
+
+
+    public void OnDisable()
+    {
+        if (resumeButton != null)
+            resumeButton.onClick.RemoveListener(OnResumeButtonClicked);
+        if (exitButton != null)
+            exitButton.onClick.RemoveListener(OnExitButtonClicked);
     }
 
 

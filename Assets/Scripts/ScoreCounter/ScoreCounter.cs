@@ -4,7 +4,7 @@ using Zenject;
 using System;
 
 
-public class ScoreCounter: IInitializable, ITickable
+public class ScoreCounter: ITickable
 {
     private Transform player;
 
