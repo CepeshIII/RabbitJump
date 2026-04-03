@@ -17,6 +17,7 @@ public class Player: MonoBehaviour
         onFall += SwitchToFall;
         onJump += SwitchToJump;
         onLand += SwitchToIdle;
+        onGameOver += SwitchToGameOver;
     }
 
 
@@ -30,25 +31,37 @@ public class Player: MonoBehaviour
     {
         onFall -= SwitchToFall;
         onJump -= SwitchToJump;
+        onLand -= SwitchToIdle;
+        onGameOver -= SwitchToGameOver;
     }
 
 
     private void SwitchToFall()
     {
+        Debug.Log("Fall");
+
         CurrentState = PlayerState.Falling;
     }
 
 
     private void SwitchToJump()
     {
+        Debug.Log("Jump");
         CurrentState = PlayerState.Jumping;
     }
 
 
     private void SwitchToIdle()
     {
+        Debug.Log("Idle");
         CurrentState = PlayerState.Idle;
     }
 
+
+    private void SwitchToGameOver()
+    {
+        Debug.Log("Game Over");
+        CurrentState = PlayerState.GameOver;
+    }
 }
 
