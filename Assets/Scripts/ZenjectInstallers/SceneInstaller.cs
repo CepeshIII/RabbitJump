@@ -10,5 +10,12 @@ public class SceneInstaller : MonoInstaller
         Container.Bind<IMovement>().To<RB2DMovement>().FromComponentInHierarchy().AsSingle();
         Container.Bind<CameraBorder>().FromComponentInHierarchy().AsSingle();
         Container.Bind<Player>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<CameraFollow>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PlatformGenerator>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PlatformPoolManager>().FromComponentInHierarchy().AsSingle();
+        Container.BindInterfacesAndSelfTo<PlatformCuller>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<PlayerSoundManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<AudioSource>().FromComponentInHierarchy().AsSingle();
+
     }
 }

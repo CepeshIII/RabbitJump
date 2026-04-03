@@ -5,6 +5,9 @@ using Zenject;
 
 public class PlayerController: MonoBehaviour, IInitializable, ITickable, IDisposable
 {
+    [SerializeField, Range(0f, 1f)]
+    public float gameOverThresholdY = 0.1f;
+
     private IInputManager input;
     private IMovement movement;
     private CameraBorder cameraBorder;
@@ -76,7 +79,7 @@ public class PlayerController: MonoBehaviour, IInitializable, ITickable, IDispos
         }
 
         // Game over
-        if (cameraBorder.Bottom >= position.y)
+        if (Mathf.LerpUnclamped(cameraBorder.Bottom, cameraBorder.Top, -gameOverThresholdY) > position.y)
         {
             player.onGameOver?.Invoke();
         }
