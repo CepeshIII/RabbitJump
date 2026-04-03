@@ -9,13 +9,6 @@
 The game is available to play directly in your browser or for download on Itch.io:
 👉 **[https://cepeshiii.itch.io/rabbit-jump](https://cepeshiii.itch.io/rabbit-jump)**
 
-
-## ✨ Features
-- **Dynamic Jumping Mechanics:** Tight, responsive controls designed for precision.
-- **Neon Aesthetic:** Beautifully designed city rooftops with a vibrant vaporwave/neon vibe.
-- **Progressive Difficulty:** The higher you go, the more challenging the obstacles become.
-- **High Score System:** Challenge yourself to beat your personal best.
-
 ## ⌨️ Controls
 - **Arrow Keys / WASD:** Move Left and Right.
 - **Touch Screen**
