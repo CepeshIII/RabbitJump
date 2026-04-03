@@ -21,12 +21,6 @@ public class Player: MonoBehaviour
     }
 
 
-    private void Start()
-    {
-        
-    }
-
-
     private void OnDisable()
     {
         onFall -= SwitchToFall;
@@ -38,29 +32,24 @@ public class Player: MonoBehaviour
 
     private void SwitchToFall()
     {
-        Debug.Log("Fall");
-
         CurrentState = PlayerState.Falling;
     }
 
 
     private void SwitchToJump()
     {
-        Debug.Log("Jump");
         CurrentState = PlayerState.Jumping;
     }
 
 
     private void SwitchToIdle()
     {
-        Debug.Log("Idle");
         CurrentState = PlayerState.Idle;
     }
 
 
     private void SwitchToGameOver()
     {
-        Debug.Log("Game Over");
         CurrentState = PlayerState.GameOver;
     }
 }

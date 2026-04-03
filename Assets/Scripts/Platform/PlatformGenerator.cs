@@ -9,8 +9,8 @@ public class PlatformGenerator : MonoBehaviour
     [SerializeField] private GameObject bigPlatformPrefab;
     [SerializeField] private GameObject smallPlatformPrefab;
 
-    [SerializeField] private float spawnOffsetY = 10f;
-    [SerializeField] private float distanceBetweenPlatforms = 2.5f;
+    [SerializeField] private float minDistanceBetweenPlatforms = 2.5f;
+    [SerializeField] private float maxDistanceBetweenPlatforms = 5;
 
     [SerializeField, Range(0, 1)] 
     private float horizontalBorderOffset;
@@ -79,7 +79,8 @@ public class PlatformGenerator : MonoBehaviour
                     rightBorder,
                     randomValue);
 
-        float y = lastSpawnY + distanceBetweenPlatforms;
+        var distance = UnityEngine.Random.Range(minDistanceBetweenPlatforms, maxDistanceBetweenPlatforms);
+        float y = lastSpawnY + distance;
 
         bool isBig = UnityEngine.Random.value > 0.3f;
 

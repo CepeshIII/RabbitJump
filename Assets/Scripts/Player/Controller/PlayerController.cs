@@ -38,6 +38,8 @@ public class PlayerController: MonoBehaviour, IInitializable, ITickable, IDispos
 
     public void Tick()
     {
+        if(player.CurrentState == PlayerState.GameOver) return;
+
         HandleBounds();
         HandleState();
     }

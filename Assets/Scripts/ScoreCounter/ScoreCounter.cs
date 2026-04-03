@@ -1,17 +1,18 @@
 using UnityEngine;
 using TMPro;
 using Zenject;
+using System;
 
 
-public class ScoreCounter : MonoBehaviour
+public class ScoreCounter: IInitializable, ITickable
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private TMP_Text scoreText;
+    private Transform player;
 
 
     private float _maxHeight;
     private int _currentScore;
 
+    public Action<int> onScoreUpdated;
 
 
     [Inject]
@@ -21,14 +22,14 @@ public class ScoreCounter : MonoBehaviour
     }
 
 
-    private void Start()
+    public void Initialize()
     {
         _maxHeight = player.position.y;
-        UpdateUI(0);
+        ResetScore();
     }
 
 
-    private void Update()
+    public void Tick()
     {
         float currentHeight = player.position.y;
 
@@ -40,16 +41,9 @@ public class ScoreCounter : MonoBehaviour
 
             if (newScore != _currentScore)
             {
-                _currentScore = newScore;
-                UpdateUI(_currentScore);
+                UpdateScore(newScore);
             }
         }
-    }
-
-
-    private void UpdateUI(int score)
-    {
-        scoreText.text = score.ToString();
     }
 
 
@@ -62,7 +56,15 @@ public class ScoreCounter : MonoBehaviour
     public void ResetScore()
     {
         _maxHeight = player.position.y;
-        _currentScore = 0;
-        UpdateUI(0);
+        UpdateScore(0);
     }
+
+
+    public void UpdateScore(int newScore)
+    {
+        _currentScore = newScore;
+        onScoreUpdated?.Invoke(_currentScore);
+    }
+
+
 }
