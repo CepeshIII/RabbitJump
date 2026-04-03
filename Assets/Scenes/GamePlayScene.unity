@@ -973,6 +973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rabbit
       objectReference: {fileID: 0}
+    - target: {fileID: 5351129554389214027, guid: a4acc108a6dac634abafb046c1db2cbd, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7062007679188190973, guid: a4acc108a6dac634abafb046c1db2cbd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

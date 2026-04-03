@@ -1099,6 +1099,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Touch"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab344139-711c-460a-937d-d602879f229c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TouchMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""89a2aa98-c74a-4a6b-8ed4-eca5ec05dcf5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -1222,6 +1240,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffa982da-a77f-448f-b308-3eaee75f8d31"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cab9e655-fe73-486a-8c25-48d84cbfe398"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1316,6 +1356,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
         m_GamePlay_Jump = m_GamePlay.FindAction("Jump", throwIfNotFound: true);
         m_GamePlay_Movement = m_GamePlay.FindAction("Movement", throwIfNotFound: true);
+        m_GamePlay_Touch = m_GamePlay.FindAction("Touch", throwIfNotFound: true);
+        m_GamePlay_TouchMovement = m_GamePlay.FindAction("TouchMovement", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1779,6 +1821,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
     private readonly InputAction m_GamePlay_Jump;
     private readonly InputAction m_GamePlay_Movement;
+    private readonly InputAction m_GamePlay_Touch;
+    private readonly InputAction m_GamePlay_TouchMovement;
     /// <summary>
     /// Provides access to input actions defined in input action map "GamePlay".
     /// </summary>
@@ -1798,6 +1842,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "GamePlay/Movement".
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_GamePlay_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action "GamePlay/Touch".
+        /// </summary>
+        public InputAction @Touch => m_Wrapper.m_GamePlay_Touch;
+        /// <summary>
+        /// Provides access to the underlying input action "GamePlay/TouchMovement".
+        /// </summary>
+        public InputAction @TouchMovement => m_Wrapper.m_GamePlay_TouchMovement;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1830,6 +1882,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Touch.started += instance.OnTouch;
+            @Touch.performed += instance.OnTouch;
+            @Touch.canceled += instance.OnTouch;
+            @TouchMovement.started += instance.OnTouchMovement;
+            @TouchMovement.performed += instance.OnTouchMovement;
+            @TouchMovement.canceled += instance.OnTouchMovement;
         }
 
         /// <summary>
@@ -1847,6 +1905,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Touch.started -= instance.OnTouch;
+            @Touch.performed -= instance.OnTouch;
+            @Touch.canceled -= instance.OnTouch;
+            @TouchMovement.started -= instance.OnTouchMovement;
+            @TouchMovement.performed -= instance.OnTouchMovement;
+            @TouchMovement.canceled -= instance.OnTouchMovement;
         }
 
         /// <summary>
@@ -2115,5 +2179,19 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Touch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTouch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TouchMovement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTouchMovement(InputAction.CallbackContext context);
     }
 }

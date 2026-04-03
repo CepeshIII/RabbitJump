@@ -28,7 +28,7 @@ public class RB2DMovement : MonoBehaviour, IMovement
     
     public void Move(Vector2 direction)
     {
-        rb.AddForceX(direction.x * speed);
+        rb.linearVelocityX = direction.x * speed;
     }
 
 
