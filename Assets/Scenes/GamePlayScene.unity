@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57429e3406ae3840a9ca8037f5fbc36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewportOffset: 0.25
+  viewportOffset: 0.015
 --- !u!1 &1554827485
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +755,7 @@ MonoBehaviour:
   smallPlatformPrefab: {fileID: 110457120195785532, guid: b58f2fb5bfda7d548bdd60c0565bc6a5, type: 3}
   minDistanceBetweenPlatforms: 1
   maxDistanceBetweenPlatforms: 5
-  horizontalBorderOffset: 0.2
+  horizontalBorderOffset: 0.17
   topBorderOffset: 0.1
 --- !u!1 &1986553795
 GameObject:

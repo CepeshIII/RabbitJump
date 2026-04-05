@@ -70,14 +70,15 @@ public class PlayerController: MonoBehaviour, IInitializable, ITickable, IDispos
     {
         var position = movement.GetPosition();
 
-        // Horizontal wrap
-        if (cameraBorder.IsOutsideHorizontal(position))
-        {
-            float normalizedX = Mathf.InverseLerp(cameraBorder.Left, cameraBorder.Right, position.x);
-            float invertedNormalizedX = 1f - normalizedX;
-            float newX = Mathf.Lerp(cameraBorder.Left, cameraBorder.Right, invertedNormalizedX);
+        const float epsilon = 0.1f;
 
-            movement.SetPositionX(newX);
+        if (position.x < cameraBorder.Left)
+        {
+            movement.SetPositionX(cameraBorder.Right - epsilon);
+        }
+        else if (position.x > cameraBorder.Right)
+        {
+            movement.SetPositionX(cameraBorder.Left + epsilon);
         }
 
         // Game over
